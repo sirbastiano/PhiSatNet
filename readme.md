@@ -140,6 +140,31 @@ for batch in tqdm(dataloader, desc="Processing Batches"):
         # Your training loop or inference logic here
 ```
 
+## 🌐 Uploading to Hugging Face
+
+To upload the dataset to Hugging Face, you can use the provided `zip_n_push.sh` script. This script automates the process of zipping the dataset and pushing it to the Hugging Face Hub.
+
+### Steps to Upload:
+1. Ensure the dataset is organized as described in the **Dataset Structure** section.
+2. Run the `zip_n_push.sh` script:
+  ```bash
+  source zip_n_push.sh <dataset_root>.zarr <huggingface_repo_url>
+  ```
+  Replace `<dataset_root>.zarr` with the path to your dataset and `<huggingface_repo_url>` with the URL of your Hugging Face repository.
+
+### Example:
+```bash
+bash zip_n_push.sh burned_area_dataset.zarr https://huggingface.co/username/burned_area_dataset
+```
+
+### Notes:
+- Ensure you have the necessary permissions to push to the Hugging Face repository.
+- The script requires `git-lfs` to be installed and configured for handling large files.
+- For more details, refer to the Hugging Face documentation: [Hugging Face Hub](https://huggingface.co/docs/hub).
+
+
+
+
 
 ⸻
 

@@ -48,6 +48,11 @@ htmlcov/
 # Logs
 *.log
 
+# files 
+*.zip
+*.zarr
+*.tar
+
 # Virtual environment
 *.env
 *.venv
