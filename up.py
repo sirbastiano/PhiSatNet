@@ -92,7 +92,3 @@ if __name__ == "__main__":
         upload_to_huggingface(folder_path=path, repo_id=args.repo_id, repo_type=args.repo_type)
     else:
         logging.error(f"The provided path '{path}' is neither a file nor a folder.")
-    
-    
-    fold = "/Data_large/marine/PythonProjects/OtherProjects/lpl-PyNas/notebooks/phisatnet/burned_area_dataset.zarr"
-    upload_to_huggingface(folder_path=fold, repo_id="sirbastiano94/PhiSat2-Burned-Area-Seg")
