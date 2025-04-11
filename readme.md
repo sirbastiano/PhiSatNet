@@ -83,6 +83,15 @@ Metadata is stored under the `metadata/` directory as attributes or nested dicti
   - **Example**: `"07-04-2025 12:30:00"`
 
 ### 🔹 Geolocation
+    
+- **`crs`**  
+  - **Type**: string of Coordinate Reference System  
+  - **Example**:
+    ```json
+        'EPSG:4326'
+    ```
+    
+
 - **`geolocation`**  
   - **Type**: Dictionary of corner coordinates  
   - **Example**:
