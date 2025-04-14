@@ -31,6 +31,10 @@ fi
 
 # Compress the dataset into split zip files
 7z a -tzip -v"$MAX_ZIP_SIZE" "$ZIP_NAME" "$(basename "$DATASET_NAME")/."
+# or use the zipper.py script
+# pip install py7zr
+# python zipper.py --input_dir "$(basename "$DATASET_NAME")" --output_dir "$DATASET_DIR" --max_size "$MAX_ZIP_SIZE"
+
 
 # Upload the compressed dataset to Hugging Face
 python "$UPLOAD_SCRIPT" --path "./$ZIP_NAME" --repo_id "$REPO_ID" --repo_type "$REPO_TYPE"
