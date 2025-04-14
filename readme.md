@@ -2,9 +2,15 @@
 
 - Designed by Roberto Del Prete and Nicolas Longépé, Apr-7-2025
 
-This repository defines the structure and usage of a cloud optimised zarr dataset format designed for machine learning tasks such as classification, segmentation, regression, compression, and reconstruction. The format adopted here is the one of the PhiSatNet paper.
+## ⚠️ Warning
+
+As a rule of thumb, **do not include data augmentation in the dataset**. Always store the original data to ensure reproducibility and flexibility for downstream tasks. Augmentation should be applied dynamically during training or preprocessing.
+
+
 
 ## 🛠️ Tools & Dependencies
+
+This repository defines the structure and usage of a cloud optimised zarr dataset format designed for machine learning tasks such as classification, segmentation, regression, compression, and reconstruction. The format adopted here is the one of the PhiSatNet paper.
 
 - Install requirements:
 ```
@@ -35,6 +41,36 @@ The dataset is organized in two main groups:
 ```
 
 Each `<sample_id>` corresponds to a unique tile (or chip).
+
+
+If cross-validation sets are available, adopt a **hierarchical structure** to organize the dataset, ensuring clear separation between training, validation, and testing subsets.
+
+### 📂 Hierarchical Cross-Validation Structure
+
+For datasets requiring **cross-validation**, the following hierarchical structure is recommended:
+
+```
+<dataset_root>.zarr/
+├── Fold_1/
+│   ├── TrainVal/
+│   │   ├── <sample_id>/
+│   │   │   ├── img/
+│   │   │   ├── label/
+│   │   │   └── metadata/
+│   └── Test/
+│       ├── <sample_id>/
+│       │   ├── img/
+│       │   ├── label/
+│       │   └── metadata/
+├── Fold_2/
+│   ├── TrainVal/
+│   └── Test/
+└── Fold_N/
+  ├── TrainVal/
+  └── Test/
+```
+
+Each `Fold_X` directory represents a cross-validation fold, with separate `Train` and `Val` subsets. This structure ensures clear organization and reproducibility for cross-validation experiments.
 
 ---
 
